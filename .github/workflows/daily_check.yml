@@ -8,16 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Manually download your code from your own repo
       - name: Manual Checkout
         run: |
-          git clone https://github.com/jihanlahmar/Whale-Spy.git .
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} .
           
-      # Step 2: Use the Python already installed on the Linux server
       - name: Install Requirements
         run: |
           python3 -m pip install requests beautifulsoup4
           
-      # Step 3: Run your spy
       - name: Run Spy
         run: python3 jorf_spy.py
