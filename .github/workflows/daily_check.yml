@@ -1,18 +1,20 @@
 name: Daily Port Check
 on:
   schedule:
-    - cron: '0 8 * * *' # Runs at 8:00 AM UTC every day
-  workflow_dispatch:   # This adds a "Run" button so you can test it manually
+    - cron: '0 8 * * *' 
+  workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Using the exact ID for actions/checkout
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 
         
+      # Using the exact ID for actions/setup-python
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 
         with:
           python-version: '3.9'
           
