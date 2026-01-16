@@ -10,7 +10,11 @@ jobs:
     steps:
       - name: Manual Checkout
         run: |
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} whale_folder
+          # We clone everything directly into the current spot
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} .
+          
+      - name: List Files (Debug)
+        run: ls -R  # This helps us see if the file is actually there
           
       - name: Install Requirements
         run: |
@@ -18,5 +22,5 @@ jobs:
           
       - name: Run Spy
         run: |
-          cd whale_folder
+          # We run it directly since it's in the main spot
           python3 jorf_spy.py
