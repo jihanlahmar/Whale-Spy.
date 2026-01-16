@@ -10,11 +10,13 @@ jobs:
     steps:
       - name: Manual Checkout
         run: |
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} .
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} whale_folder
           
       - name: Install Requirements
         run: |
           python3 -m pip install requests beautifulsoup4
           
       - name: Run Spy
-        run: python3 jorf_spy.py
+        run: |
+          cd whale_folder
+          python3 jorf_spy.py
