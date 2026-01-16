@@ -8,18 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Using the exact ID for actions/checkout
-      - name: Checkout code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 
-        
-      # Using the exact ID for actions/setup-python
-      - name: Set up Python
-        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 
-        with:
-          python-version: '3.9'
+      # Step 1: Manually download your code from your own repo
+      - name: Manual Checkout
+        run: |
+          git clone https://github.com/jihanlahmar/Whale-Spy.git .
           
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
-        
+      # Step 2: Use the Python already installed on the Linux server
+      - name: Install Requirements
+        run: |
+          python3 -m pip install requests beautifulsoup4
+          
+      # Step 3: Run your spy
       - name: Run Spy
-        run: python jorf_spy.py
+        run: python3 jorf_spy.py
